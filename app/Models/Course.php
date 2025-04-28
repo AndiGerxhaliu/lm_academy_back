@@ -25,5 +25,8 @@ class Course extends Model
         return $this->belognsTo(User::class, 'updated_by')->selectUserName();
 
     }
+    public function modules(){
+        return $this->hasMany(CourseModule::class, 'course_id');
+    }
     
 }

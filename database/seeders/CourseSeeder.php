@@ -6,143 +6,57 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class CourseMaterialSeeder extends Seeder
+class CourseSeeder extends Seeder
 {
     public function run()
     {
-        $now = Carbon::now();
+        $now = Carbon::create(2025, 1, 25);
 
-        $materials = [
-            // Materials for "Setting Up Your Laravel Environment" (Section 1)
+        $courses = [
             [
-                'course_section_id' => 1,
-                'title' => 'Introduction Video',
-                'type' => 'video',
-                'content' => 'Welcome to Laravel installation guide. This video will walk you through the setup process.',
-                'material_url' => '/materials/videos/laravel-setup-guide.mp4',
-                'sort_order' => 1,
+                'id' => 1,
+                'title' => 'Laravel Intro',
+                'description' => 'This comprehensive Laravel course is designed to guide both novice and intermediate developers through the fundamentals and advanced features of the Laravel framework. As one of the most popular PHP frameworks, Laravel offers an elegant syntax and is aimed at enhancing both the speed and simplicity of web development. This course will cover everything from setting up a development environment, routing, middleware, and handling data with Eloquent ORM, to more advanced topics such as authentication, authorization, and package development. By the end of this course, students will have built a complete application from scratch, showcasing their ability to harness Laravel\'s features to create highly responsive, scalable, and maintainable web applications.',
+                'intro_video_url' => null,
+                'intro_image_url' => null,
+                'status' => 1,
                 'created_by' => 1,
                 'updated_by' => null,
+                'duration' => 600 * 60,
+                'nr_of_files' => 5,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'course_section_id' => 1,
-                'title' => 'Required Software and Tools',
-                'type' => 'text',
-                'content' => 'Before we begin with Laravel, you\'ll need to install: PHP 8.1 or higher, Composer, Node.js, and a code editor like Visual Studio Code. This lesson will guide you through the installation process for each component.',
-                'material_url' => null,
-                'sort_order' => 2,
-                'created_by' => 1,
+                'id' => 2,
+                'title' => 'Vue.js Advance',
+                'description' => 'Dive deep into advanced Vue.js concepts with this comprehensive course designed for developers looking to master modern frontend development. This course explores complex state management with Vuex, advanced component patterns, custom directives, and optimization techniques. You\'ll learn about Vue 3\'s Composition API, reactive systems, and how to build large-scale applications with Vue.js. The curriculum includes hands-on projects focusing on real-time applications, advanced routing scenarios, and integration with backend APIs. By course completion, you\'ll be equipped with the knowledge to build sophisticated, high-performance Vue.js applications and understand the framework\'s inner workings.',
+                'intro_video_url' => null,
+                'intro_image_url' => null,
+                'status' => 1,
+                'created_by' => 2,
                 'updated_by' => null,
+                'duration' => 200 * 60,
+                'nr_of_files' => 3,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'course_section_id' => 1,
-                'title' => 'Laravel Directory Structure Overview',
-                'type' => 'image',
-                'content' => 'Visual representation of Laravel\'s directory structure',
-                'material_url' => '/materials/images/laravel-directory-structure.png',
-                'sort_order' => 3,
-                'created_by' => 1,
+                'id' => 3,
+                'title' => 'Full stack Laravel and Vue.js',
+                'description' => 'Master full-stack web development with this comprehensive course combining Laravel and Vue.js. This intensive program bridges the gap between backend and frontend development, teaching you how to create modern, full-stack applications. You\'ll learn advanced Laravel APIs, Vue.js component architecture, real-time features with WebSockets, and how to implement authentication and authorization across both platforms. The course covers deployment strategies, testing methodologies, and best practices for building scalable applications. Through practical projects, you\'ll gain hands-on experience in creating full-featured applications that integrate seamlessly between Laravel\'s robust backend and Vue.js\'s reactive frontend, preparing you for real-world full-stack development challenges.',
+                'intro_video_url' => null,
+                'intro_image_url' => null,
+                'status' => 0,
+                'created_by' => 3,
                 'updated_by' => null,
+                'duration' => 1900 * 60,
+                'nr_of_files' => 42,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
-
-            // Materials for "Understanding Laravel's Architecture" (Section 2)
-            [
-                'course_section_id' => 2,
-                'title' => 'Laravel Architecture Diagram',
-                'type' => 'image',
-                'content' => 'Comprehensive diagram showing Laravel\'s architectural components and their relationships',
-                'material_url' => '/materials/images/laravel-architecture.png',
-                'sort_order' => 1,
-                'created_by' => 1,
-                'updated_by' => null,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'course_section_id' => 2,
-                'title' => 'Service Container Deep Dive',
-                'type' => 'video',
-                'content' => 'Detailed explanation of Laravel\'s Service Container with practical examples',
-                'material_url' => '/materials/videos/service-container-explained.mp4',
-                'sort_order' => 2,
-                'created_by' => 1,
-                'updated_by' => null,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'course_section_id' => 2,
-                'title' => 'Service Container and Service Providers',
-                'type' => 'text',
-                'content' => 'Learn about Laravel\'s powerful service container and how service providers bootstrap your application. Understanding dependency injection and container bindings.',
-                'material_url' => null,
-                'sort_order' => 3,
-                'created_by' => 1,
-                'updated_by' => null,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-
-            // Materials for "Introduction to Blade Templating" (Section 3)
-            [
-                'course_section_id' => 3,
-                'title' => 'Blade Syntax Overview',
-                'type' => 'video',
-                'content' => 'Complete walkthrough of Blade template syntax and features',
-                'material_url' => '/materials/videos/blade-syntax-guide.mp4',
-                'sort_order' => 1,
-                'created_by' => 1,
-                'updated_by' => null,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'course_section_id' => 3,
-                'title' => 'Blade Directives Cheat Sheet',
-                'type' => 'image',
-                'content' => 'Quick reference guide for all Blade directives',
-                'material_url' => '/materials/images/blade-cheatsheet.png',
-                'sort_order' => 2,
-                'created_by' => 1,
-                'updated_by' => null,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'course_section_id' => 3,
-                'title' => 'Layout Management with Blade',
-                'type' => 'text',
-                'content' => 'Learn about template inheritance using @extends, @section, and @yield directives. Creating reusable layouts and components.',
-                'material_url' => null,
-                'sort_order' => 3,
-                'created_by' => 1,
-                'updated_by' => null,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-
-            // Additional file example
-            [
-                'course_section_id' => 3,
-                'title' => 'Blade Templates Starter Kit',
-                'type' => 'file',
-                'content' => 'Download this starter kit to get pre-built Blade templates for common use cases',
-                'material_url' => '/materials/files/blade-starter-kit.zip',
-                'sort_order' => 4,
-                'created_by' => 1,
-                'updated_by' => null,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-
         ];
 
-        DB::table('course_materials')->insert($materials);
+        DB::table('courses')->insert($courses);
     }
 }
